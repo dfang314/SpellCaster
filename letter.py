@@ -25,6 +25,8 @@ LETTER_VALUES = {"a": 1,
                 "y": 4,
                 "z": 8,}
 
+WORDS = [] # decreasing points order TODO
+
 def random_letter():
   return "a" # TODO
 
@@ -37,3 +39,5 @@ class Letter:
         self.gem = False
         self.dl = False
         self.tl = False
+        self.double = False
+        
