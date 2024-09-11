@@ -6,7 +6,7 @@ class Player:
     
     def take_turn(self, grid, players):
       # returns one of:
-      # * "swap", [i, j, letter]
+      # * "swap", [i, j, character]
       # * "shuffle", None
       # * "move", ordered list of tuples representing list of indices corresponding to the chosen word
       # * "timeout", None (timeout)

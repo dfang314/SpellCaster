@@ -27,17 +27,16 @@ LETTER_VALUES = {"a": 1,
 
 WORDS = [] # decreasing points order TODO
 
-def random_letter():
+def random_char():
   return "a" # TODO
 
 class Letter:
-    def __init__(self, letter=None):
-        if letter is None:
-            letter = random_letter()
-        self.letter = letter
-        self.value = LETTER_VALUES[letter]
+    def __init__(self, char=None):
+        if char is None:
+            char = random_char()
+        self.char = char
+        self.value = LETTER_VALUES[char]
         self.gem = False
         self.dl = False
         self.tl = False
         self.double = False
-        
