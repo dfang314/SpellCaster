@@ -1,3 +1,5 @@
+import random
+
 LETTER_VALUES = {"a": 1,
                 "b": 4,
                 "c": 5,
@@ -28,7 +30,7 @@ LETTER_VALUES = {"a": 1,
 WORDS = [] # decreasing points order TODO
 
 def random_char():
-  return "a" # TODO
+  return random.choice(list(LETTER_VALUES.keys())) # TODO
 
 class Letter:
     def __init__(self, char=None):
@@ -40,3 +42,9 @@ class Letter:
         self.dl = False
         self.tl = False
         self.double = False
+    
+    def __str__(self):
+        return self.char
+
+    def __repr__(self):
+        return self.char

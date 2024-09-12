@@ -25,10 +25,11 @@ class Game:
         random.shuffle(all_letters)
         self.grid = [all_letters[:5], all_letters[5:10], all_letters[10:15], all_letters[15:20], all_letters[20:]]
       
-    def playTurn(self):
+    def play_turn(self):
         curr_player = self.players[self.curr_turn]
         move, details = curr_player.take_turn(self.grid, self.players)
         while True:
+            # print(f"Player {curr_player.id} made move {move}")
             if move == "timeout":
                 break
             elif move == "swap":
@@ -44,9 +45,9 @@ class Game:
                         curr_player.gems = min(10, curr_player.gems + 1)
                     curr_player.pts += used_letter.value
                     self.grid[i][j] = letter.Letter()
-                new_gem_spots = [(i // 4, i % 4) for i in range(25)]
-                new_gem_spots = filter(lambda x: not self.grid[x[0]][x[1]].gem and x not in details)
-                new_gem_spots = random.sample(new_gem_spots, gems_obtained)
+                new_gem_spots = [(i // 5, i % 5) for i in range(25)]
+                new_gem_spots = filter(lambda x: not self.grid[x[0]][x[1]].gem and x not in details, new_gem_spots)
+                new_gem_spots = random.sample(list(new_gem_spots), gems_obtained)
                 for spot in new_gem_spots:
                     self.grid[spot[0]][spot[1]].gem = True
                 break
@@ -62,10 +63,12 @@ class Game:
             if self.curr_round == 6:
                 # TODO: end the game
                 print("game has ended")
+                print("Player points:", [str(x.pts + x.gems) for x in self.players])
+                print("Final board:", self.grid)
         
-    def playGame(self):
+    def play_game(self):
         while self.curr_round < 6:
-            self.playTurn()
+            self.play_turn()
 
 
 

@@ -8,7 +8,7 @@ class Player:
       # returns one of:
       # * "swap", [i, j, character]
       # * "shuffle", None
-      # * "move", ordered list of tuples representing list of indices corresponding to the chosen word
+      # * "word", ordered list of tuples representing list of indices corresponding to the chosen word
       # * "timeout", None (timeout)
       # a returned word is guaranteed to be valid
       return "timeout", None
