@@ -43,7 +43,13 @@ class Game:
                     if used_letter.gem:
                         gems_obtained += 1
                         curr_player.gems = min(10, curr_player.gems + 1)
-                    curr_player.pts += used_letter.value
+                    if used_letter.tl:
+                        curr_player.pts += 3 * used_letter.value
+                    elif used_letter.dl:
+                        curr_player.pts += 2 * used_letter.value
+                    else:
+                        curr_player.pts += used_letter.value
+                    # TODO: new tl/dl tile
                     self.grid[i][j] = letter.Letter()
                 new_gem_spots = [(i // 5, i % 5) for i in range(25)]
                 new_gem_spots = filter(lambda x: not self.grid[x[0]][x[1]].gem and x not in details, new_gem_spots)
