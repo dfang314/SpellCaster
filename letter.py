@@ -27,12 +27,6 @@ LETTER_VALUES = {"a": 1,
                 "y": 4,
                 "z": 8,}
 
-# Surprisingly hard to find the correct dictionary
-# These weird word help determin and rule out possibilities:
-# oo: allowed, cdr: not allowed, goier: allowed
-# SOWPODS/CSW is the most common and is currently the best guess
-# TWL, NWL and ENABLE do not allow oo and goier.
-# SCOWL is many lists, and has goier in one but also has cdr in that same list
 WORDS = [] # decreasing points order TODO
 
 def random_char():
