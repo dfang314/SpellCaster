@@ -26,7 +26,7 @@ def get_game_state(players):
             crop_top = i * 60
             crop_bot = crop_top + 74
             letter_img = grid_img.crop((crop_left, crop_top, crop_right, crop_bot))
-            # letter_img.show()
+            letter_img.save(f"letter_imgs/{i}_{j}.png")
             dl, tl, double, gem, letter_probs = parse_letter(letter_img)
             best_letter = chr(ord("a") + np.argmax(letter_probs))
             grid[i].append(letter.Letter(best_letter))
