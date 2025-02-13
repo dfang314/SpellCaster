@@ -24,55 +24,30 @@ def train_model():
 
     model = keras.Sequential([
         layers.Input(shape=(35, 35, 4)),
-        layers.ZeroPadding2D(padding=2),
 
         layers.Conv2D(filters=32, kernel_size=3, padding="same", strides=1),
         layers.BatchNormalization(),
         layers.ReLU(),
-        layers.MaxPooling2D(pool_size=2, strides=2),
 
-        layers.Conv2D(filters=128, kernel_size=3, padding="same", strides=1),
+        layers.Conv2D(filters=32, kernel_size=3, padding="same", strides=1),
         layers.BatchNormalization(),
         layers.ReLU(),
-        layers.MaxPooling2D(pool_size=2, strides=2),
+        layers.MaxPooling2D(pool_size=3, strides=2), # output is 17x17
 
-        layers.Conv2D(filters=256, kernel_size=3, padding="same", strides=1),
+        layers.Conv2D(filters=16, kernel_size=3, padding="same", strides=1),
         layers.BatchNormalization(),
         layers.ReLU(),
-
-        layers.Conv2D(filters=256, kernel_size=3, padding="same", strides=1),
-        layers.BatchNormalization(),
-        layers.ReLU(),
-        layers.MaxPooling2D(pool_size=2, strides=2),
-
-        layers.Conv2D(filters=512, kernel_size=3, padding="same", strides=1),
-        layers.BatchNormalization(),
-        layers.ReLU(),
-
-        layers.Conv2D(filters=512, kernel_size=3, padding="same", strides=1),
-        layers.BatchNormalization(),
-        layers.ReLU(),
-        layers.MaxPooling2D(pool_size=2, strides=2),
-
-        layers.Conv2D(filters=512, kernel_size=3, padding="same", strides=1),
-        layers.BatchNormalization(),
-        layers.ReLU(),
-
-        layers.Conv2D(filters=512, kernel_size=3, padding="same", strides=1),
-        layers.BatchNormalization(),
-        layers.ReLU(),
-        layers.MaxPooling2D(pool_size=2, strides=2),
+        layers.MaxPooling2D(pool_size=3, strides=2), # 8x8
 
         layers.Flatten(),
 
-        layers.Dense(units=4096, activation="relu"),
-        layers.Dropout(rate=0.5),
+        layers.Dense(units=256, activation="relu"),
+        layers.Dropout(rate=0.2),
 
-        layers.Dense(units=4096, activation="relu"),
-        layers.Dropout(rate=0.5),
+        layers.Dense(units=32, activation="relu"),
+        layers.Dropout(rate=0.2),
 
-        # softmax not specified in assignment directly but is noted in the paper
-        layers.Dense(units=10, activation="softmax"),
+        layers.Dense(units=1, activation="softmax"),
         
     ])
 
