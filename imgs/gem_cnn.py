@@ -17,10 +17,13 @@ def train_model():
     for gem_img in gem_imgs:
         img = im.open(f"{gem_imgs_path}/{gem_img}")
         imgs.append(keras.utils.img_to_array(img))
+
+    with open(imgs_path + "/labels") as label_file:
+        labels = [int(label) for label in label_file]
     
-    print(imgs[0].shape)
-    print(f"Loaded {len(imgs)} images")
-    
+    # print(imgs[0].shape)
+    # print(f"Loaded {len(imgs)} images")
+    # print(f"Found labels {labels}")
 
     model = keras.Sequential([
         layers.Input(shape=(35, 35, 4)),
@@ -32,7 +35,7 @@ def train_model():
         layers.Conv2D(filters=32, kernel_size=3, padding="same", strides=1),
         layers.BatchNormalization(),
         layers.ReLU(),
-        layers.MaxPooling2D(pool_size=3, strides=2)
+        layers.MaxPooling2D(pool_size=3, strides=2),
 
         layers.Conv2D(filters=16, kernel_size=3, padding="same", strides=1),
         layers.BatchNormalization(),
@@ -47,24 +50,25 @@ def train_model():
         layers.Dense(units=32, activation="relu"),
         layers.Dropout(rate=0.2),
 
-        layers.Dense(units=1, activation="softmax"),
+        layers.Dense(units=1, activation="sigmoid"),
         
     ])
 
     model.compile(
         optimizer='adam',
-        loss=keras.losses.SparseCategoricalCrossentropy(),
+        loss= keras.losses.BinaryCrossentropy(),
         metrics=['Accuracy'],
     )
 
     history = model.fit(
-        x=imgs,
-        y=labels,
+        x=tf.convert_to_tensor(imgs),
+        y=tf.convert_to_tensor(labels),
         epochs=100,
+        validation_split=0.1,
     ).history
 
-    model.save("model.keras")
+    model.save("gem.keras")
 
     return model
 
-# train_model()
+train_model()
