@@ -1,9 +1,9 @@
 from tensorflow import keras
 from tensorflow.keras import layers
-import tensorflow_datasets as tfds
 import tensorflow as tf
 from PIL import Image as im
 import os
+import augment
 
 def train_model():
     
@@ -21,6 +21,8 @@ def train_model():
     with open(imgs_path + "/labels") as label_file:
         labels = [int(label) for label in label_file]
     
+    augment.augment(imgs, labels, augment.blur)
+
     # print(imgs[0].shape)
     # print(f"Loaded {len(imgs)} images")
     # print(f"Found labels {labels}")
