@@ -1,5 +1,6 @@
 import numpy as np
 from tensorflow.keras import layers
+import tensorflow as tf
 
 def _check_data_len_matches(data, targets):
    if len(data) != len(targets):
@@ -21,4 +22,8 @@ def blur(img):
     noise_layer = layers.GaussianNoise(0.5)
     return noise_layer(img, training=True)
 
+def shift_right(img, shift_amt = 5):
+   return tf.roll(img, shift=shift_amt, axis=0)
 
+def shift_down(img, shift_amt = 5):
+   return tf.roll(img, shift=shift_amt, axis=1)
