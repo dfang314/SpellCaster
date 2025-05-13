@@ -8,6 +8,9 @@ class Game:
             self.grid.append([])
             for j in range(5):
                 self.grid[i].append(letter.Letter())
+        
+        self.letter_boost = (-1, -1) # dl in first 2 rounds, tl afterwards
+        self.double = (-1, -1) # not set until round 2
 
         # TODO: figure out how gems are distributed
         
@@ -38,19 +41,26 @@ class Game:
                 self.shuffle(self.curr_turn)
             elif move == "word":
                 gems_obtained = 0
+                pts_obtained = 0
+                double = False
                 for i, j in details:
+                    if (i, j) == self.double:
+                        double = True
                     used_letter = self.grid[i][j]
                     if used_letter.gem:
                         gems_obtained += 1
-                        curr_player.gems = min(10, curr_player.gems + 1)
-                    if used_letter.tl:
-                        curr_player.pts += 3 * used_letter.value
-                    elif used_letter.dl:
-                        curr_player.pts += 2 * used_letter.value
+                    if (i, j) == self.letter_boost:
+                        if self.curr_round <= 2:
+                            pts_obtained += 2 * used_letter.value
+                        else:
+                            pts_obtained += 3 * used_letter.value
                     else:
-                        curr_player.pts += used_letter.value
+                        pts_obtained += used_letter.value
                     # TODO: new tl/dl tile
                     self.grid[i][j] = letter.Letter()
+                curr_player.gems = min(10, curr_player.gems + gems_obtained)
+                curr_player.pts += 2*pts_obtained if double else pts_obtained
+
                 new_gem_spots = [(i // 5, i % 5) for i in range(25)]
                 new_gem_spots = filter(lambda x: not self.grid[x[0]][x[1]].gem and x not in details, new_gem_spots)
                 new_gem_spots = random.sample(list(new_gem_spots), gems_obtained)
@@ -75,9 +85,3 @@ class Game:
     def play_game(self):
         while self.curr_round < 6:
             self.play_turn()
-
-
-
-       
-
-

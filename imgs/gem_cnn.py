@@ -22,6 +22,10 @@ def train_model():
         labels = [int(label) for label in label_file]
     
     augment.augment(imgs, labels, augment.blur)
+    augment.augment(imgs, labels, augment.shift_down)
+    augment.augment(imgs, labels, lambda x:augment.shift_down(x, -5))
+    augment.augment(imgs, labels, augment.shift_right)
+    augment.augment(imgs, labels, lambda x:augment.shift_right(x, -5))
 
     # print(imgs[0].shape)
     # print(f"Loaded {len(imgs)} images")
@@ -65,7 +69,7 @@ def train_model():
     history = model.fit(
         x=tf.convert_to_tensor(imgs),
         y=tf.convert_to_tensor(labels),
-        epochs=100,
+        epochs=30,
         validation_split=0.1,
     ).history
 
