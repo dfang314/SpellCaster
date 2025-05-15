@@ -66,15 +66,27 @@ def train_model():
         metrics=['Accuracy'],
     )
 
-    history = model.fit(
+    model.fit(
         x=tf.convert_to_tensor(imgs),
         y=tf.convert_to_tensor(labels),
         epochs=30,
         validation_split=0.1,
-    ).history
+    )
 
     model.save("gem.keras")
 
     return model
 
-train_model()
+def load_model():
+    return keras.models.load_model("gem.keras")
+
+# model = load_model()
+# img = im.open(f"test.png")
+
+# import generate_subimg as gen
+
+# letter_imgs = gen.generate_letter_imgs(img)
+# gem_imgs = [gen.generate_gem_img(letter_img) for letter_img in letter_imgs]
+# for img in gem_imgs:
+#     img.show()
+#     print(model(tf.expand_dims(keras.utils.img_to_array(img), 0)))

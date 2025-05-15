@@ -1,6 +1,7 @@
 import letter
 import numpy as np
 from PIL import Image as im
+import imgs.generate_subimg as gen
 
 def parse_letter(img):
     # based on letter image, figures out whether dl or tl is applicable,
