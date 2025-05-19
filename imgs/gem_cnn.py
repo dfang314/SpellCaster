@@ -26,6 +26,7 @@ def train_model():
     augment.augment(imgs, labels, lambda x:augment.shift_down(x, -5))
     augment.augment(imgs, labels, augment.shift_right)
     augment.augment(imgs, labels, lambda x:augment.shift_right(x, -5))
+    imgs, labels = augment.shuffle_data(imgs, labels)
 
     # print(imgs[0].shape)
     # print(f"Loaded {len(imgs)} images")

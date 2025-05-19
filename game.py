@@ -6,7 +6,7 @@ def rand_spot():
     return i // 5, i % 5
 
 class Game:
-    def __init__(self, players, randomize=True): 
+    def __init__(self, players, randomize=True):
         self.grid = []
         for i in range(5):
             self.grid.append([])
