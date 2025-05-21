@@ -13,8 +13,9 @@ class Game:
             for j in range(5):
                 self.grid[i].append(letter.Letter())
         
-        self.letter_boost = (-1, -1) # dl in first 2 rounds, tl afterwards
         self.double = (-1, -1) # not set until round 2
+        self.dl = (-1, -1) # TODO: dl vs. tl
+        self.tl = (-1, -1)
 
         # TODO: figure out how gems are distributed
         
@@ -47,23 +48,27 @@ class Game:
                 gems_obtained = 0
                 pts_obtained = 0
                 double = False
+                dl = False
+                tl = False
                 for x, y in details:
                     if (x, y) == self.double:
                         double = True
                     used_letter = self.grid[x][y]
                     if used_letter.gem:
                         gems_obtained += 1
-                    if (x, y) == self.letter_boost:
-                        if self.curr_round <= 2:
-                            pts_obtained += 2 * used_letter.value
-                        else:
-                            pts_obtained += 3 * used_letter.value
+                    if (x, y) == self.dl:
+                        dl = True
+                        pts_obtained += 2 * used_letter.value
+                    elif (x, y) == self.tl:
+                        tl = True
+                        pts_obtained += 3 * used_letter.value
                     else:
                         pts_obtained += used_letter.value
                     # TODO: new tl/dl tile
                     self.grid[x][y] = letter.Letter()
                 curr_player.gems = min(10, curr_player.gems + gems_obtained)
                 curr_player.pts += 2*pts_obtained if double else pts_obtained
+                # TODO long word points
 
                 gems_replaced = 0
                 while gems_replaced < gems_obtained:

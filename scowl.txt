@@ -1,0 +1,92 @@
+These are offensive words taken from scowl. Testing of these following words (that exist in sowpods) is as follows:
+shit, cunt: In profane.1, not allowed.
+crap, fart: In profane.3, allowed.
+kraut, wop: In offensive.2, not allowed.
+Abos: In offensive.2 but capitalized, allowed. So, we are case sensitive.
+n-r: In offensive.1, not allowed.
+n-red: In offensive.1, allowed.
+Since the above 2 conflicting words were added at the same time to scowl, there may be more research required.
+However, for now, profane.1, offensive.1, and offensive.2 have are listed below, and are removed from the word list.
+
+STARTREAD
+arsehole
+arsehole's
+arseholes
+asshole
+asshole's
+assholes
+bullshit
+bullshit's
+bullshits
+bullshitted
+bullshitter
+bullshitter's
+bullshitters
+bullshitting
+bullshitting's
+chickenshit
+chickenshit's
+chickenshits
+cocksucker
+cocksucker's
+cocksuckers
+cunt
+cunt's
+cunts
+fuck
+fuck's
+fucked
+fucker
+fucker's
+fuckers
+fuckhead
+fuckhead's
+fuckheads
+fucking
+fuckings
+fucks
+horseshit
+horseshit's
+horseshits
+motherfucker
+motherfucker's
+motherfuckers
+motherfucking
+shit
+shit's
+shite
+shite's
+shites
+shitfaced
+shithead
+shithead's
+shitheads
+shitload
+shits
+shitted
+shittier
+shittiest
+shitting
+shitting's
+shitty
+nigga
+nigga's
+niggas
+niggaz
+nigger
+nigger's
+niggered
+niggering
+niggers
+Abo
+Abo's
+Abos
+coon
+coon's
+coons
+kraut
+kraut's
+krauts
+wop
+wop's
+wops
