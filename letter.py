@@ -27,19 +27,30 @@ LETTER_VALUES = {"a": 1,
                 "y": 4,
                 "z": 8,}
 
-WORDS = [] # decreasing points order
+WORDS = set() # decreasing points order
 
 with open("sowpods.txt") as f:
     read = False
     for line in f:
         word = line[:-1] # ignore newline at end of every word
         if read and len(word) > 0:
-            WORDS.append(word)
+            WORDS.add(word)
         elif word == "STARTREAD":
             read = True
 
+with open("scowl.txt") as f:
+    read = False
+    for line in f:
+        word = line[:-1] # ignore newline at end of every word
+        if read and len(word) > 0 and word in WORDS:
+            WORDS.remove(word)
+        elif word == "STARTREAD":
+            read = True
+
+WORDS = list(WORDS)
+
 WORDS.sort(key=lambda word:-sum([LETTER_VALUES[char] for char in word]))
-# print(WORDS[:2], WORDS[-2:])
+print(WORDS[:2], WORDS[-2:])
 
 def random_char():
   return random.choice(list(LETTER_VALUES.keys())) # TODO
