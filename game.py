@@ -85,7 +85,7 @@ class Game:
             else:
                 print("ERROR: invalid move")
 
-            move, details = curr_player.take_turn(self.grid, self.players, self.curr_round)
+            move, details = curr_player.take_turn(self.grid, self.double, self.dl, self.tl, self.players, self.curr_round)
         self.curr_turn += 1
         if self.curr_turn == len(self.players):
             self.curr_turn = 0

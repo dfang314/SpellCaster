@@ -5,7 +5,7 @@ class Player:
         self.id = id # id must match index in players list
     
     # self.id is the curr_player since take_turn is only called for the current player
-    def take_turn(self, grid, players, curr_round):
+    def take_turn(self, grid, double, dl, tl, players, curr_round):
         # returns one of:
         # * "swap", [i, j, character]
         # * "shuffle", None
