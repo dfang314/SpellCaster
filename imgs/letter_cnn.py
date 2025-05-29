@@ -65,27 +65,25 @@ def train_model():
         
     ])
 
-    # TODO: find good loss and metrics, etc.
-
     model.compile(
         optimizer='adam',
-        loss= keras.losses.BinaryCrossentropy(),
+        loss= keras.losses.CategoricalCrossentropy(),
         metrics=['Accuracy'],
     )
 
     model.fit(
         x=tf.convert_to_tensor(imgs),
         y=tf.convert_to_tensor(labels),
-        epochs=30,
+        epochs=50,
         validation_split=0.1,
     )
 
-    model.save("gem.keras")
+    model.save("letter.keras")
 
     return model
 
 def load_model():
-    return keras.models.load_model("gem.keras")
+    return keras.models.load_model("letter.keras")
 
 # model = load_model()
 # img = im.open(f"test.png")
