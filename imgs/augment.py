@@ -27,3 +27,5 @@ def shift_right(img, shift_amt = 5):
 
 def shift_down(img, shift_amt = 5):
    return tf.roll(img, shift=shift_amt, axis=1)
+
+# TODO: Add relect vertically and reflect horizontally

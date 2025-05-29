@@ -19,7 +19,7 @@ def generate_letter_imgs(input_img):
     return letter_imgs
 
 def generate_gem_img(letter_img):
-    # letter images are 70x70
+    # letter images are 74x74
     return letter_img.crop((0, 35, 35, 70))
 
 def save_imgs(imgs, path):

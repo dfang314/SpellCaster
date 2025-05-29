@@ -18,7 +18,7 @@ def train_model():
         img = im.open(f"{gem_imgs_path}/{gem_img}")
         imgs.append(keras.utils.img_to_array(img))
 
-    with open(imgs_path + "/labels") as label_file:
+    with open(imgs_path + "/gem_labels") as label_file:
         labels = [int(label) for label in label_file]
     
     augment.augment(imgs, labels, augment.blur)
