@@ -3,7 +3,7 @@ from tensorflow.keras import layers
 import tensorflow as tf
 from PIL import Image as im
 import os
-import augment
+from imgs import augment
 
 def train_model():
     

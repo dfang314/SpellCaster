@@ -50,7 +50,7 @@ with open("scowl.txt") as f:
 WORDS = list(WORDS)
 
 WORDS.sort(key=lambda word:-sum([LETTER_VALUES[char] for char in word]))
-print(WORDS[:2], WORDS[-2:])
+# print(WORDS[:2], WORDS[-2:])
 
 def random_char():
   return random.choice(list(LETTER_VALUES.keys())) # TODO

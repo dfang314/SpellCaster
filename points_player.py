@@ -28,7 +28,7 @@ def find(grid, word, path):
             if found:
                 return found, indices
             path = path[:-1]
-        
+        return False, None
 
 class PointsPlayer(player.Player):
     def take_turn(self, grid, double, dl, tl, players, curr_round):
@@ -36,5 +36,6 @@ class PointsPlayer(player.Player):
         for word in letter.WORDS:
             found, indices = find(grid, word, path)
             if found:
+                print("Found word", word)
                 return "word", indices
         return super().take_turn(grid, players, curr_round)
