@@ -1,10 +1,10 @@
 from PIL import Image as im
 import os
 
-def generate_letter_imgs(input_img):
-    img = input_img.resize((550, 500))
-    grid_img = img.crop((20, 90, 335, 405))
+def get_grid(img):
+    return img.resize((550, 500)).crop((20, 90, 335, 405))
 
+def generate_letter_imgs(grid_img):
     letter_imgs = []
     for i in range(5):
         for j in range(5):
@@ -34,7 +34,9 @@ def generate_and_save_all_subimgs():
     for input_file in input_files:
         img = im.open(f"{input_imgs_path}/{input_file}")
 
-        letter_imgs = generate_letter_imgs(img)
+        grid_img = get_grid(img)
+
+        letter_imgs = generate_letter_imgs(grid_img)
         gem_imgs = [generate_gem_img(letter_img) for letter_img in letter_imgs]
 
         save_imgs(letter_imgs, imgs_path + "/letter_imgs")

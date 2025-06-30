@@ -5,6 +5,8 @@ from PIL import Image as im
 import os
 from imgs import augment
 
+loaded_model = None
+
 def train_model():
     
     imgs_path = __file__[:-len("/gem_cnn.py")]
@@ -79,7 +81,10 @@ def train_model():
     return model
 
 def load_model():
-    return keras.models.load_model("gem.keras")
+    global loaded_model
+    if loaded_model is None:
+        loaded_model = keras.models.load_model("gem.keras")
+    return loaded_model
 
 # model = load_model()
 # img = im.open(f"test.png")
