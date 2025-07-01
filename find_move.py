@@ -1,5 +1,5 @@
 import points_player
-import game_parser
+from imgs import game_parser
 
 players = [points_player.PointsPlayer(i) for i in range(4)]
 

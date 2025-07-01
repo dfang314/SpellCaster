@@ -9,6 +9,7 @@ import tensorflow as tf
 
 def parse_letter(img):
     gem_img = tf.expand_dims(keras.utils.img_to_array(gen.generate_gem_img(img)), 0)
+    gen.generate_gem_img(img).show()
     letter_img = tf.expand_dims(keras.utils.img_to_array(img), 0)
 
     # based on letter image, figures out whether there is double points,
