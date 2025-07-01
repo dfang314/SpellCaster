@@ -35,7 +35,7 @@ class Game:
       
     def play_turn(self):
         curr_player = self.players[self.curr_turn]
-        move, details = curr_player.take_turn(self.grid, self.players, self.curr_round)
+        move, details = curr_player.take_turn(self.grid, self.double, self.dl, self.tl, self.players, self.curr_round)
         while True:
             # print(f"Player {curr_player.id} made move {move}")
             if move == "timeout":
