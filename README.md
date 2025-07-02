@@ -1,0 +1,1 @@
+Jul 2 2025: The game has recently been removed from discord activities and the frvr site. Therefore, this project is on hold. If the game is ever re-released, the primary next steps are to wrap up the game logic engine and polish the letter recognition CNN.
